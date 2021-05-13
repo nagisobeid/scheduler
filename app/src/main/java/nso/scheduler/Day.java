@@ -4,11 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Day {
-    String  day;
-    HashMap<ArrayList<String>, ArrayList<String>> shifts;
+    String day;
+    //(shift, numEmployees)
+    //HashMap<String, ArrayList<String>> shifts;
 
-    Day(String day) {
+    public Day(String day) {
         this.day = day;
     }
 
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getDay() {
+        return day;
+    }
 }

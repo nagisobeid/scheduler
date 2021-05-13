@@ -59,6 +59,7 @@
         android:layout_height="43dp"
         android:layout_marginBottom="8dp"
         android:text="Add Shift"
+        android:onClick="btnAddShift"
         app:backgroundTint="#48AE34"
         app:layout_constraintBottom_toTopOf="@+id/buttonHome"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +72,7 @@
         android:layout_height="43dp"
         android:layout_marginBottom="12dp"
         android:text="Home"
+        android:onClick="btnHome"
         app:backgroundTint="#48AE34"
         app:layout_constraintBottom_toTopOf="@+id/textViewCurShifts"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +83,7 @@
         android:id="@+id/textViewCurShifts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CURRENT SHIFTS"
+        android:text="Current Shifts"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,9 +100,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
+            android:id="@+id/shiftLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+        </LinearLayout>
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
