@@ -70,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                                         //Log.d(TAG, document.getId() + " => " + document.getString("password"));
                                         if (password.getText().toString().equals(document.getString("password"))) {
                                             //startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                            Data.getInstance().setCurrentBusiness(username.getText().toString());
                                             Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                                             i.putExtra("business", username.getText().toString());
                                             startActivity(i);

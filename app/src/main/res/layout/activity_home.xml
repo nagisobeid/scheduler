@@ -39,6 +39,7 @@
         android:layout_height="66dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="Add Conditions"
+        android:onClick="onBtnClickedAddConditions"
         app:backgroundTint="#48AE34"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"

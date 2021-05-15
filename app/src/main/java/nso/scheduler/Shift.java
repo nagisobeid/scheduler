@@ -6,12 +6,14 @@ public class Shift{
     private String shiftStart;
     private String shiftEnd;
     private int numEmployees;
+    private int id;
 
-    public Shift(String day, String shiftStart, String shiftEnd, int numEmployees) {
+    public Shift(String day, String shiftStart, String shiftEnd, int numEmployees, int id) {
         this.day = day;
         this.shiftStart = shiftStart;
         this.shiftEnd = shiftEnd;
         this.numEmployees = numEmployees;
+        this.id = id;
     };
 
     public String getDay() {
@@ -28,5 +30,9 @@ public class Shift{
 
     public int getNumEmployees() {
         return numEmployees;
+    }
+
+    public int getId() {
+        return id;
     }
 }

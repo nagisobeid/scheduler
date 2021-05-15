@@ -11,13 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.common.hash.HashingOutputStream;
+
+import java.util.ArrayList;
+
 public class DayActivity extends AppCompatActivity {
 
     private CharSequence text = "";
     int duration = Toast.LENGTH_SHORT;
     private Context context;
     private String button;
-
+    private static ArrayList<Shift> shifts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +29,15 @@ public class DayActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_day);
+        try {
+            System.out.println("CHECKING----------------------------------------------");
+            ArrayList<Shift> s = Data.getInstance().getShifts();
+            for(Shift x: s) {
+                System.out.println(x.getDay()+" "+x.getShiftStart());
+            }
+        } catch (Exception e) {
+            System.out.println("NOTHING TO GET----------------------------------------------");
+        }
     }
 
     public void btnClickedDay(View view) {
@@ -56,5 +69,12 @@ public class DayActivity extends AppCompatActivity {
         Intent i = new Intent(DayActivity.this, AddShiftActivity.class);
         i.putExtra("day", button);
         startActivity(i);
+    }
+
+    public void btnClickedBackHome(View view) {
+        //startActivity(new Intent(DayActivity.this, HomeActivity.class));
+        Intent intent = new Intent(DayActivity.this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
     }
 }

@@ -45,6 +45,8 @@ public class AddEmployeeActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
             employee.setText("");
+            Data.getInstance().getEmployees().clear();
+            db.getEmployees();
         }
     }
 }

@@ -46,10 +46,22 @@
         android:id="@+id/btnSunday"
         android:layout_width="280dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="276dp"
         android:onClick="btnClickedDay"
         android:text="Sunday"
         app:backgroundTint="#48AE34"
+        app:layout_constraintBottom_toTopOf="@+id/btnBackHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnBackHome"
+        android:layout_width="280dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="196dp"
+        android:onClick="btnClickedBackHome"
+        android:text="Done"
+        app:backgroundTint="#34AEA0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

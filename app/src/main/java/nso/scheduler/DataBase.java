@@ -91,5 +91,29 @@ public class DataBase {
                 });
     }
 
+    public void getEmployees() {
+        String TAG = null;
+
+        db.collection("employee").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        if(document.get("bid").equals(Data.getInstance().getCurrentBusiness())) {
+                            Employee e = new Employee();
+                            e.setName(document.get("username").toString());
+                            Data.getInstance().addEmployee(e);
+                        }
+                    }
+                    //Log.d(TAG, list.toString());
+                } else {
+                    System.out.println("ERRRROR FETCHING EMPLOYEES----------------------------------------+");
+                    //Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
+    }
+
 
 }

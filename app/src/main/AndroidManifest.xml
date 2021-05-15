@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scheduler">
-        <activity android:name=".AddShiftActivity"></activity>
+        <activity android:name=".AddConditionActivity"></activity>
+        <activity android:name=".SelectEmployeeActivity" />
+        <activity android:name=".AddShiftActivity" />
         <activity android:name=".DayActivity" />
         <activity android:name=".AddEmployeeActivity" />
         <activity android:name=".HomeActivity" />

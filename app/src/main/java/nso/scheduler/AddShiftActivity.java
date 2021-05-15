@@ -6,22 +6,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.common.hash.HashingOutputStream;
 import com.google.common.io.LineReader;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class AddShiftActivity extends AppCompatActivity {
 
@@ -34,9 +40,6 @@ public class AddShiftActivity extends AppCompatActivity {
     private CharSequence text = "";
     private int duration = Toast.LENGTH_SHORT;
     private Context context;
-     //(shift, numEmployees)
-    //private HashMap<String, Integer> shifts;
-    private ArrayList<Shift> shifts;
     private LinearLayout layout;
 
     @Override
@@ -58,7 +61,22 @@ public class AddShiftActivity extends AppCompatActivity {
         numEmployees = findViewById(R.id.editTextNumberEmp);
         context = getApplicationContext();
         layout = (LinearLayout)findViewById(R.id.shiftLinearLayout);
-        shifts = new ArrayList<>();
+
+        try {
+            ArrayList<Shift> s = Data.getInstance().getShifts();
+            populate(s);
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("ERORRRRRRR");
+        }
+    }
+
+    public int generateID() {
+        Random r = new Random();
+        int low = 1;
+        int high = 1000;
+        int result = r.nextInt(high-low) + low;
+        return result;
     }
 
     public void btnAddShift(View view) {
@@ -84,31 +102,52 @@ public class AddShiftActivity extends AppCompatActivity {
             toast.show();
         } else {
             //shifts.put(timeStart.getText().toString()+"-"+timeEnd.getText().toString(), Integer.parseInt(numEmployees.getText().toString()));
-            Shift shift = new Shift(day,timeStart.getText().toString(),timeEnd.getText().toString(), Integer.parseInt(numEmployees.getText().toString()));
-            shifts.add(shift);
+            int id = generateID();
+            Shift shift = new Shift(day,timeStart.getText().toString(),timeEnd.getText().toString(), Integer.parseInt(numEmployees.getText().toString()), id);
+            Data.getInstance().addShift(shift);
+            populate(Data.getInstance().getShifts());
             // layouts
-            TextView shiftDetails = new TextView(this);
-            Switch delete = new Switch(this);
-            delete.setChecked(true);
-            LinearLayout col1 = new LinearLayout(this);
-            col1.setOrientation(LinearLayout.HORIZONTAL);
-
-            shiftDetails.setText(shift.getShiftStart() +" - "+ shift.getShiftEnd() + " ~ " + shift.getNumEmployees());
-            shiftDetails.setTextColor(getResources().getColor(R.color.limegreen));
-            shiftDetails.setTextSize(20);
-
-            TableLayout.LayoutParams params1 = new TableLayout.LayoutParams(0, TableLayout.LayoutParams.WRAP_CONTENT, 1f);
-            shiftDetails.setLayoutParams(params1);
-
-            col1.addView(shiftDetails);
-            col1.addView(delete);
-
-            layout.addView(col1);
         }
+    }
 
+    public void populate(ArrayList<Shift> shifts) {
+        layout.removeAllViews();
+        for(Shift x: shifts) {
+            if (x.getDay().equals(this.getDay())) {
+                TextView shiftDetails = new TextView(this);
+
+                LinearLayout col1 = new LinearLayout(this);
+                col1.setOrientation(LinearLayout.HORIZONTAL);
+
+                shiftDetails.setText(x.getShiftStart() + " - " + x.getShiftEnd());
+
+                shiftDetails.setTextColor(getResources().getColor(R.color.limegreen));;
+                shiftDetails.setTextSize(20);
+                shiftDetails.setClickable(true);
+                shiftDetails.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                       Data.getInstance().deleteShift(shiftDetails.getId());
+                       ArrayList<Shift> s = Data.getInstance().getShifts();
+                       populate(s);
+                    }
+                });
+
+                TableLayout.LayoutParams params1 = new TableLayout.LayoutParams(0, TableLayout.LayoutParams.WRAP_CONTENT, 1f);
+                shiftDetails.setLayoutParams(params1);
+
+                col1.addView(shiftDetails);
+
+                layout.addView(col1);
+            }
+        }
+    }
+
+    public String getDay() {
+        return day;
     }
 
     public void btnHome(View view) {
-        startActivity(new Intent(AddShiftActivity.this, HomeActivity.class));
+        startActivity(new Intent(AddShiftActivity.this, DayActivity.class));
     }
 }
