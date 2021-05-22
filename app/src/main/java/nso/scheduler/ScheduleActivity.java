@@ -62,7 +62,7 @@ public class ScheduleActivity extends AppCompatActivity {
                         col1 = new LinearLayout(this);
 
                         shiftDetails.setText(employee.getEmployeeName() + ": " + eShift);
-                        shiftDetails.setTextColor(getResources().getColor(R.color.white));;
+                        shiftDetails.setTextColor(getResources().getColor(R.color.red));;
                         shiftDetails.setTextSize(20);
                         params1 = new TableLayout.LayoutParams(0, TableLayout.LayoutParams.WRAP_CONTENT, 1f);
                         shiftDetails.setLayoutParams(params1);
