@@ -20,6 +20,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Database class responsible for handling all the database interaction
+ */
 public class DataBase {
 
     private FirebaseFirestore db;
@@ -30,27 +33,46 @@ public class DataBase {
     private int success;
 
 
+    /**
+     * Default constructor that initialize the database object
+     */
     DataBase() {
         db = FirebaseFirestore.getInstance();
         success = 0;
     }
 
+    /**
+     * retuns and instance of the database
+     * @return
+     */
     public FirebaseFirestore getDb() {
         return db;
     }
 
+    /**
+     * was here for testing
+     */
     public void resetSuccess() {
         success = 0;
     }
-
+    /**
+     * was here for testing
+     */
     public void setSuccess(int val) {
         success = val;
     }
-
+    /**
+     * was here for testing
+     */
     private int getSuccess() {
         return success;
     }
 
+    /**
+     * function is responsible for adding a business to the database
+     * @param bname
+     * @param password
+     */
     public void addBusiness(String bname, String password) {
         Map<String, Object> business = new HashMap<>();
         business.put("username", bname);
@@ -71,6 +93,11 @@ public class DataBase {
                 });
     }
 
+    /**
+     * responsible for adding an employee to the database
+     * @param eName
+     * @param bName
+     */
     public void addEmployee(String eName, String bName) {
         Map<String, Object> employee = new HashMap<>();
         employee.put("username", eName);
@@ -91,6 +118,9 @@ public class DataBase {
                 });
     }
 
+    /**
+     * responsible for getting all employees from the database for a specefic business
+     */
     public void getEmployees() {
         String TAG = null;
         System.out.println("INSIDE GET EMPLOYEES" + Data.getInstance().getCurrentBusiness());

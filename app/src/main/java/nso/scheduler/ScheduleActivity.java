@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ * Activity responsible for displaying the scheudle view
+ */
 public class ScheduleActivity extends AppCompatActivity {
     private Context context;
     private LinearLayout layout;
@@ -26,17 +29,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_schedule);
 
-        /*
-        RecyclerView shifts = (RecyclerView) findViewById(R.id.rvShifts);
-        // Create adapter passing in the sample user data
-        ShiftAdapter adapter = new ShiftAdapter(Data.getInstance().getShifts(), Data.getInstance().getEmployees());
-        // Attach the adapter to the recyclerview to populate items
-        shifts.setAdapter(adapter);
-        // Set layout manager to position the items
-        shifts.setLayoutManager(new LinearLayoutManager(this));
-        // That's all!
-        */
-        //
+
         context = getApplicationContext();;
         layout = (LinearLayout)findViewById(R.id.ScheduleLinearLayout);
         //layout.removeAllViews();

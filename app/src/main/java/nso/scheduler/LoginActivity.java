@@ -21,6 +21,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * LoginActivity responsible fo displaying the login view
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText username;
@@ -31,6 +34,10 @@ public class LoginActivity extends AppCompatActivity {
     Context context;
     private DataBase db;
 
+    /**
+     * Creates the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,10 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.editTextPasswordLogin);
     }
 
+    /**
+     * Logs the user in after performing some input validation
+     * @param view
+     */
     public void onButtonLoginSubmit(View view) {
         //Context c = LoginActivity.this;
 

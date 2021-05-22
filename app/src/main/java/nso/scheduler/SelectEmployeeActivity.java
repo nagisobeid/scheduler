@@ -20,6 +20,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity to display a list of all the employees
+ */
 public class SelectEmployeeActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
@@ -45,6 +48,10 @@ public class SelectEmployeeActivity extends AppCompatActivity {
         // That's all!
     }
 
+    /**
+     * function to select employee from view
+     * @param view
+     */
     public void btnClickedEmployee(View view) {
         Employee e = (Employee) view.getTag();
         Data.getInstance().setCurrentEmployee(e);

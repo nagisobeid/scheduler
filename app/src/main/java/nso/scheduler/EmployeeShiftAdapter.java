@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * This class was here for testing and was never used, i found an easier apporach
+ */
 public class EmployeeShiftAdapter extends RecyclerView.Adapter<EmployeeShiftAdapter.ViewHolder> {
 
     private ArrayList<Employee> employees;

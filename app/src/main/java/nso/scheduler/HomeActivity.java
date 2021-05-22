@@ -16,6 +16,9 @@ import java.util.HashMap;
 
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
+/**
+ * HOmeActivity responsible for displaying the Home View after a business or user has logged in
+ */
 public class HomeActivity extends AppCompatActivity {
 
     private Intent i;
@@ -24,6 +27,10 @@ public class HomeActivity extends AppCompatActivity {
     private static HashMap<Integer, Button> deletebtns;
     private DataBase db;
 
+    /**
+     * responsible for creating the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,10 @@ public class HomeActivity extends AppCompatActivity {
         System.out.println("DESTORYIED-------------------------------------DES");
     }
 
+    /**
+     * Navigates the user to the add employee activity
+     * @param view
+     */
     public void onBtnClickedAddEmployee(View view) {
         //startActivity(new Intent(HomeActivity.this, AddEmployeeActivity.class));
         i = new Intent(HomeActivity.this, AddEmployeeActivity.class);
@@ -52,6 +63,10 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    /**
+     * Navigates the user to the add shift activity
+     * @param view
+     */
     public void onBtnClickedAddShifts(View view) {
         //i = new Intent(HomeActivity.this, DayActivity.class);
         //startActivityForResult(i,1234);
@@ -61,6 +76,10 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    /**
+     * Navigates the user to the add condition activity
+     * @param view
+     */
     public void onBtnClickedAddConditions(View view) {
         Data.getInstance().setSettingConditions(true);
         i = new Intent(HomeActivity.this, SelectEmployeeActivity.class);
@@ -69,6 +88,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    /**
+     * Generates a schedule by calling the schedule object then
+     * Navigates the user to the Schedule activity
+     * @param view
+     */
     public void onBtnClickedGenerateSchedule(View view) {
         Schedule s = new Schedule();
         s.generateSchedule();

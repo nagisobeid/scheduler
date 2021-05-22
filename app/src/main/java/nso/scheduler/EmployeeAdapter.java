@@ -13,14 +13,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * EmployeeAdapter class responsible for display8ing the EMployees inside a RecyclerView
+ */
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHolder> {
 
     private ArrayList<Employee> employees;
 
+    /**
+     * Initializes the employees arraylist to a list of employees
+     * @param employees
+     */
     public EmployeeAdapter(ArrayList<Employee> employees) {
         this.employees = employees;
     }
 
+    /**
+     * Overridden function that sets the context, layoutInflator, view and viewHolder
+     * @param parent
+     * @param viewType
+     * @return viewHolder
+     */
     @Override
     public EmployeeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
@@ -34,6 +47,11 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
         return viewHolder;
     }
 
+    /**
+     * overridden function that binds the view holder
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(EmployeeAdapter.ViewHolder holder, int position) {
         // Get the data model based on position
@@ -45,11 +63,18 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
         button.setText(employee.getEmployeeName());
     }
 
+    /**
+     * overridden function that gets the count of items in the view
+     * @return
+     */
     @Override
     public int getItemCount() {
         return employees.size();
     }
 
+    /**
+     * ViewHolder class sets the button and calls the button xml
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         public Button empBtn;
 

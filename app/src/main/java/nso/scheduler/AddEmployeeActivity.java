@@ -10,6 +10,9 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * AddEmployeeActivity class responsible for adding an employee
+ */
 public class AddEmployeeActivity extends AppCompatActivity {
 
     private EditText employee;
@@ -19,6 +22,10 @@ public class AddEmployeeActivity extends AppCompatActivity {
     private DataBase db;
     private String business;
 
+    /**
+     * overridden function that creates the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +41,10 @@ public class AddEmployeeActivity extends AppCompatActivity {
         business = (String)i.getSerializableExtra("business");
     }
 
+    /**
+     * this button adds the employee to the database after performing some filtering
+     * @param view
+     */
     public void btnClickAddEmployeeSubmit(View view) {
         if (employee.getText().toString().trim().length() == 0) {
             text = "Please enter employee name";

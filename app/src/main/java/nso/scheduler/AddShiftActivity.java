@@ -29,6 +29,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * addshiftactivity class responsible for adding shifts
+ */
 public class AddShiftActivity extends AppCompatActivity {
 
     private Intent i;
@@ -42,6 +45,10 @@ public class AddShiftActivity extends AppCompatActivity {
     private Context context;
     private LinearLayout layout;
 
+    /**
+     * overriden function responsible for creating the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +78,11 @@ public class AddShiftActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * generateID generates a random id for the list item
+     * (This function was temporary, i ended up finding a solution to retrieving a list item when clicked.)
+     * @return
+     */
     public int generateID() {
         Random r = new Random();
         int low = 1;
@@ -79,7 +91,13 @@ public class AddShiftActivity extends AppCompatActivity {
         return result;
     }
 
+    /**
+     * btnADDSHIft is responsible for registering the shift after performing input validation
+     * a shift object is created.
+     * @param view
+     */
     public void btnAddShift(View view) {
+        // THe next few lines perfrom input validation
         if(timeStart.getText().toString().trim().length() == 0) {
             text = "Please enter start time";
             Toast toast = Toast.makeText(context, text, duration);
@@ -110,6 +128,10 @@ public class AddShiftActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * populate is responsible for displaying the shift times for the given day
+     * @param shifts
+     */
     public void populate(ArrayList<Shift> shifts) {
         layout.removeAllViews();
         for(Shift x: shifts) {
@@ -143,10 +165,18 @@ public class AddShiftActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * getDay returns the current day
+     * @return
+     */
     public String getDay() {
         return day;
     }
 
+    /**
+     * takes the user back to the DayActivity
+     * @param view
+     */
     public void btnHome(View view) {
         startActivity(new Intent(AddShiftActivity.this, DayActivity.class));
     }

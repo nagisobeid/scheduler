@@ -10,10 +10,17 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * CreateAccountActivity responsible for creating a user account
+ */
 public class CreateAccountActivity extends AppCompatActivity {
 
     private DataBase db;
 
+    /**
+     * OVerridden function responsible for generating the activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +29,14 @@ public class CreateAccountActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_create_account);
 
-        //initialize database
+        //initializing the  database
         db = new DataBase();
     }
 
+    /**
+     * responsible for performing input validation and calling the database addBusiness function
+     * @param view
+     */
     public void onButtonCreateAccountSubmit(View view) {
         Context context = getApplicationContext();
         CharSequence text = "";
@@ -55,6 +66,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else {
+            //If all the data is there, insert into database.
             db.addBusiness(username.getText().toString(), password.getText().toString());
             Data.getInstance().setCurrentBusiness(username.getText().toString());
             startActivity(new Intent(CreateAccountActivity.this, HomeActivity.class));

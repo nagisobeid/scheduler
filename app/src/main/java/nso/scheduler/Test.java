@@ -2,6 +2,9 @@ package nso.scheduler;
 
 import java.util.ArrayList;
 
+/**
+ * this class was used for testing purposes
+ */
 public class Test {
     public Test() {
 

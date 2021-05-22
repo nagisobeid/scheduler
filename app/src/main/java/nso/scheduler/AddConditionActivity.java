@@ -16,6 +16,14 @@ import android.widget.Toast;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * @author Nagi Obeid
+ * @version 1.0
+ */
+
+/**
+ * Add condtion activity class extends app compatactivity
+ */
 public class AddConditionActivity extends AppCompatActivity {
 
     private TextView textView;
@@ -27,6 +35,10 @@ public class AddConditionActivity extends AppCompatActivity {
     private Context context;
     private LinearLayout layout;
 
+    /**
+     * creates the activity and sets the variables.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +66,10 @@ public class AddConditionActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * when this function is called it takes the time that was inputed and sets it as a condition for the employee
+     * @param view
+     */
     public void btnAddCondition(View view) {
         if(timeStart.getText().toString().trim().length() == 0) {
             text = "Please enter start time";
@@ -83,6 +99,10 @@ public class AddConditionActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * this function populates the listview with all the conditions for the given employee
+     * @param dayConditions
+     */
     public void populate(ArrayList<String[]> dayConditions) {
         layout.removeAllViews();
         for(String[] x: dayConditions) {
@@ -105,6 +125,10 @@ public class AddConditionActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * this button takes the user back to the day activity
+     * @param view
+     */
     public void btnDone(View view) {
         Intent i;
         i = new Intent(AddConditionActivity.this, DayActivity.class);
