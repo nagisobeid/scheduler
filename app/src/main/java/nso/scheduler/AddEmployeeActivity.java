@@ -40,7 +40,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else {
-            db.addEmployee(employee.getText().toString(), business);
+            db.addEmployee(employee.getText().toString(), Data.getInstance().getCurrentBusiness());
             text = "Employee Added Successfully";
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();

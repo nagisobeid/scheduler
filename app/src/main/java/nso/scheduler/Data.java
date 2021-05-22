@@ -7,12 +7,28 @@ public class Data {
 
     private static Employee currentEmployee;
     private static String currentBusiness;
+    private static String currentDay;
     private static ArrayList<Shift> shifts = new ArrayList<>();
     private static ArrayList<Employee> employees = new ArrayList<>();
+    private static boolean settingConditions;
 
     //private static HashMap<String, ArrayList<HashMap<Day, ArrayList<String>>>> allEmployeeConditions;
                            //EMP                   //DAY  //CONDITION
 
+    public static void setCurrentDay(String day) {
+        currentDay = day;
+    }
+
+    public String getCurrentDay() {
+        return currentDay;
+    }
+    public static void setSettingConditions(boolean status) {
+        settingConditions = status;
+    }
+
+    public static boolean getSettingConditions() {
+        return settingConditions;
+    }
     public static void setCurrentBusiness(String businessName) {
         currentBusiness = businessName;
     }
@@ -33,11 +49,11 @@ public class Data {
         currentEmployee = emp;
     }
 
-    public static Employee getCurrentEmployee() {
+    public Employee getCurrentEmployee() {
         return currentEmployee;
     }
 
-    public void addShift(Shift shift) {
+    public static void addShift(Shift shift) {
         shifts.add(shift);
     }
 
@@ -56,8 +72,6 @@ public class Data {
     public static void addEmployeeData(Employee employee) {
         employees.add(employee);
     }
-
-
 
     /////////////////////////////////////////////
     private static final Data data = new Data();

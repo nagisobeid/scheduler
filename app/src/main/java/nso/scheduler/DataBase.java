@@ -93,9 +93,8 @@ public class DataBase {
 
     public void getEmployees() {
         String TAG = null;
-
+        System.out.println("INSIDE GET EMPLOYEES" + Data.getInstance().getCurrentBusiness());
         db.collection("employee").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -103,7 +102,7 @@ public class DataBase {
                         if(document.get("bid").equals(Data.getInstance().getCurrentBusiness())) {
                             Employee e = new Employee();
                             e.setName(document.get("username").toString());
-                            Data.getInstance().addEmployee(e);
+                            Data.addEmployee(e);
                         }
                     }
                     //Log.d(TAG, list.toString());

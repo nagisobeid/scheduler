@@ -56,6 +56,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             toast.show();
         } else {
             db.addBusiness(username.getText().toString(), password.getText().toString());
+            Data.getInstance().setCurrentBusiness(username.getText().toString());
             startActivity(new Intent(CreateAccountActivity.this, HomeActivity.class));
         }
     }

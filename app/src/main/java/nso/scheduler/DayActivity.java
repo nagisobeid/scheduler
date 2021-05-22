@@ -65,15 +65,27 @@ public class DayActivity extends AppCompatActivity {
                 break;
         }
 
-        System.out.println("-------------------------------------" + button);
-        Intent i = new Intent(DayActivity.this, AddShiftActivity.class);
-        i.putExtra("day", button);
-        startActivity(i);
+        if(Data.getSettingConditions()) {
+            Data.getInstance().setCurrentDay(button);
+            System.out.println("-------------------------------------" + button);
+            Intent i = new Intent(DayActivity.this, AddConditionActivity.class);
+            startActivity(i);
+        } else {
+            System.out.println("-------------------------------------" + button);
+            Intent i = new Intent(DayActivity.this, AddShiftActivity.class);
+            i.putExtra("day", button);
+            startActivity(i);
+        }
     }
 
     public void btnClickedBackHome(View view) {
+        Intent intent;
+
+        if(Data.getInstance().getSettingConditions() == true) {
+            Data.getInstance().setSettingConditions(false);
+        }
         //startActivity(new Intent(DayActivity.this, HomeActivity.class));
-        Intent intent = new Intent(DayActivity.this, HomeActivity.class);
+        intent = new Intent(DayActivity.this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }

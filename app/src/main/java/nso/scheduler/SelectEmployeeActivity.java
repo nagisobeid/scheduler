@@ -49,7 +49,7 @@ public class SelectEmployeeActivity extends AppCompatActivity {
         Employee e = (Employee) view.getTag();
         Data.getInstance().setCurrentEmployee(e);
         System.out.println("CLICKED EMPLOYEE" + e.getEmployeeName());
-        Intent i = new Intent(SelectEmployeeActivity.this, AddConditionActivity.class);
+        Intent i = new Intent(SelectEmployeeActivity.this, DayActivity.class);
         startActivity(i);
     }
 

@@ -33,12 +33,15 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         db = new DataBase();
         db.getEmployees();
-
-
+        //System.out.println("NAGI--------------------------------------" + Data.getInstance().getCurrentBusiness());
+        //TEST
+        //Test t = new Test();
+        //
         i = getIntent();
         business = (String)i.getSerializableExtra("business");
         shifts = new ArrayList<>();
         deletebtns = new HashMap<>();
+
         System.out.println("DESTORYIED-------------------------------------DES");
     }
 
@@ -59,9 +62,18 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onBtnClickedAddConditions(View view) {
+        Data.getInstance().setSettingConditions(true);
         i = new Intent(HomeActivity.this, SelectEmployeeActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         i.putExtra("business", business);
+        startActivity(i);
+    }
+
+    public void onBtnClickedGenerateSchedule(View view) {
+        Schedule s = new Schedule();
+        s.generateSchedule();
+        i = new Intent(HomeActivity.this, ScheduleActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(i);
     }
 }

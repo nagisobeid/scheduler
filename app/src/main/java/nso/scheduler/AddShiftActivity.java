@@ -48,7 +48,7 @@ public class AddShiftActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_home);
+        //setContentView(R.layout.activity_home);
         setContentView(R.layout.activity_add_shift);
 
         textView = findViewById(R.id.textViewDay);
